@@ -1,0 +1,19 @@
+Middleware:
+==========
+.Flow:
+1.React calls Action Creator
+2.Action creator returns an action
+3.Action will be sent to Middleware
+4.Middleware will forwards actions to Reducers
+5.Reducers produces new State and sent it to React Component
+
+* Middleware has opportunity to log, stop, modify, or not touch an action
+* We can have multiple middlewares, we don't have a number of limit
+
+*Async middleware:
+1.action send a state
+2. does the action contain a promise?
+3.1 No, i don't care about it, send it to the next middleware,
+3.1.1 Yes, cool let's sit around and wait for it to resolve
+4. Resolved! heres the data create a new action and send it through all the middlewares again,
+but with the data as payload, not the promise.
